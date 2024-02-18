@@ -13,5 +13,6 @@ fn main() {
 }
 
 fn current_favorite_color() -> String {
-    "blue"
+    // 字面量转string
+    "blue".to_string()
 }
