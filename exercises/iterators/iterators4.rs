@@ -3,8 +3,6 @@
 // Execute `rustlings hint iterators4` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 pub fn factorial(num: u64) -> u64 {
     // Complete this function to return the factorial of num
     // Do not use:
@@ -15,6 +13,9 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+    // B 是初始值的类型和返回值的类型；
+    // F 是一个闭包类型，它接受两个参数：当前的累积值和集合中的一个元素，然后返回一个新的累积值。
+    (1..=num).fold(1, |a, b| a * b)
 }
 
 #[cfg(test)]

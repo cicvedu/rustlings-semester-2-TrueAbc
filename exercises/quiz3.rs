@@ -16,7 +16,7 @@
 //
 // Execute `rustlings hint quiz3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+use std::fmt::Display;
 
 pub struct ReportCard {
     pub grade: f32,
@@ -26,8 +26,41 @@ pub struct ReportCard {
 
 impl ReportCard {
     pub fn print(&self) -> String {
-        format!("{} ({}) - achieved a grade of {}",
-            &self.student_name, &self.student_age, &self.grade)
+        format!("{}", self)
+    }
+
+    pub fn print_alpha(&self) -> String {
+        if self.grade < 2.2 {
+            format!(
+                "{} ({}) - achieved a grade of {}",
+                self.student_name, self.student_age, "A+"
+            )
+        } else if self.grade < 3.00 {
+            format!(
+                "{} ({}) - achieved a grade of {}",
+                self.student_name, self.student_age, "A"
+            )
+        } else if self.grade < 4.0 {
+            format!(
+                "{} ({}) - achieved a grade of {}",
+                self.student_name, self.student_age, "B"
+            )
+        } else {
+            format!(
+                "{} ({}) - achieved a grade of {}",
+                self.student_name, self.student_age, "C"
+            )
+        }
+    }
+}
+
+impl Display for ReportCard {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{} ({}) - achieved a grade of {}",
+            self.student_name, self.student_age, self.grade
+        )
     }
 }
 
@@ -57,7 +90,7 @@ mod tests {
             student_age: 11,
         };
         assert_eq!(
-            report_card.print(),
+            report_card.print_alpha(),
             "Gary Plotter (11) - achieved a grade of A+"
         );
     }
